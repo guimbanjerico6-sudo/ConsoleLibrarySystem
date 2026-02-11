@@ -66,7 +66,8 @@ namespace ConsoleLibrarySystem // <--- Change this name!
                             Console.WriteLine("--- ADMIN MENU ---");
                             Console.WriteLine("1. Add a new book");
                             Console.WriteLine("2. Delete a book (Coming Soon)");
-                            Console.WriteLine("3. Back to Main Menu");
+                            Console.WriteLine("3. Add Book Stock");
+                            Console.WriteLine("4. Back to Main Menu");
                             Console.Write("Select option: ");
                             string adminChoice = Console.ReadLine();
 
@@ -98,6 +99,17 @@ namespace ConsoleLibrarySystem // <--- Change this name!
                                 Console.ReadLine();
                             }
                             else if (adminChoice == "3")
+                            {
+                                Console.Write("Enter the title of the book to restock: ");
+                                string titleToRestock = Console.ReadLine();
+                                Console.Write("Enter the amount to add: ");
+                                int amountToAdd = int.Parse(Console.ReadLine());
+                                // Call your new function!
+                                libraryManager.RestockBook(titleToRestock, amountToAdd);
+                                Console.WriteLine("Press Enter to continue...");
+                                Console.ReadLine();
+                            }
+                            else if (adminChoice == "4")
                             {
                                 break; // Breaks the Admin loop, goes back to Main loop
                             }
