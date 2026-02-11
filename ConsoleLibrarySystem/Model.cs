@@ -1,7 +1,6 @@
 ﻿namespace ConsoleLibrarySystem
 {
-    // Rename class "Model" to avoid confusion. 
-    // Usually, we just put classes directly in the namespace.
+    
     public class LibraryItem
     {
         public string BookTitle { get; set; }

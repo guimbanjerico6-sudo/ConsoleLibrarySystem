@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ConsoleLibrarySystem
 {
@@ -14,10 +15,9 @@ namespace ConsoleLibrarySystem
 
             public void AddItem(string title, string author, int stock, bool isReference)
             {
-                // Check if an item with the same title already exists
                 if (items.Any(item => item.BookTitle == title))
                 {
-                    // Optionally handle duplicate (e.g., throw exception or return)
+                    
                     return;
                 }
 
@@ -72,6 +72,26 @@ namespace ConsoleLibrarySystem
                 else
                 {
                     Console.WriteLine($"Sorry, '{title}' by {author} is not recognized in the library.");
+                }
+            }
+
+            public void RemoveBook(string title)
+            {
+                // 1. Find the book in the list (Logic)
+                // We use FirstOrDefault to look for a book where the Title matches the input
+                var bookToRemove = items.FirstOrDefault(b => b.BookTitle == title);
+
+                // 2. Check if we actually found it (Safety)
+                if (bookToRemove != null)
+                {
+                    // 3. Remove it (Action)
+                    items.Remove(bookToRemove);
+                    Console.WriteLine("Success: Book removed from the library.");
+                }
+                else
+                {
+                    // 4. Handle the error if it doesn't exist
+                    Console.WriteLine("Error: Book not found.");
                 }
             }
         }
