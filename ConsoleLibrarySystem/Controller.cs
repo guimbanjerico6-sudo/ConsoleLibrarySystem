@@ -17,7 +17,7 @@ namespace ConsoleLibrarySystem
             {
                 if (items.Any(item => item.BookTitle == title))
                 {
-                    
+                    Console.WriteLine($"Error: A book named '{title}' already exists on the shelf!");
                     return;
                 }
 
@@ -92,6 +92,25 @@ namespace ConsoleLibrarySystem
                 {
                     // 4. Handle the error if it doesn't exist
                     Console.WriteLine("Error: Book not found.");
+                }
+            }
+            public void RestockBook(string title, int amountToAdd)
+            {
+                // 1. Find the book
+                var book = items.FirstOrDefault(b => b.BookTitle == title);
+
+                // 2. Check if it exists
+                if (book != null)
+                {
+                    // 3. Update the stock (Math!)
+                    book.Stock += amountToAdd; // Short for: stock = stock + amount
+
+                    Console.WriteLine($"Success! Added {amountToAdd} copies.");
+                    Console.WriteLine($"New Total Stock: {book.Stock}");
+                }
+                else
+                {
+                    Console.WriteLine("Error: Book not found. You cannot restock a book that doesn't exist!");
                 }
             }
         }
